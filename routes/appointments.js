@@ -21,7 +21,9 @@ router.get('/appointment', [auth], (req,res, next) => {
 
 
 
-router.post("/", [auth], async (req, res) => {
+router.post("/post", [auth], async (req, res) => {
+    console.log("new appointment"),
+    console.log(signedInUser);
     try {
       const appoint = new appointmentDate({
         email: req.body.email,
