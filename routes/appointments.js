@@ -1,9 +1,8 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const exspress = require('express');
 const {Schedule} = require("../models/schedule");
 const { User } = require('../models/user');
 const auth = require('../middleware/auth');
-const { startSession } = require('mongoose');
-const { appointmentDate} = require("../models/schedule");
 
 
 
@@ -21,11 +20,10 @@ router.get('/appointment', [auth], (req,res, next) => {
 
 
 
-router.post("/post", [auth], async (req, res) => {
-    console.log("new appointment"),
-    console.log(signedInUser);
+router.post("/post", async (req, res) => {
+    console.log("new appointment");
     try {
-      const appoint = new appointmentDate({
+      const appoint = new Schedule({
         email: req.body.email,
         appointmentDate: req.body.appointmentDate,
         time: req.body.time,
@@ -36,7 +34,7 @@ router.post("/post", [auth], async (req, res) => {
       const signedInUser = await User.findById(req.user._id);
   
       console.log("new appointment", appoint);
-      console.log(signedInUser);
+      // console.log(signedInUser);
       signedInUser.myList.push(appoint._id);
       await signedInUser.save();
   

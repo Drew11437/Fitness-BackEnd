@@ -12,7 +12,9 @@ connectDb();
 //TODO: Add routes to the routes folder. By convention, there should be a file for each schema/model
 //! NOTE - for each route file, don't forget to import your router into index.js and add a new app.use statement below!
 
-app.use(cors());
+app.use(cors(
+  { origin: "*"}
+));
 app.use(express.json());
 app.use(`/api/users`, usersRouter);
 app.use('/api/appointments', scheduleRouter);
