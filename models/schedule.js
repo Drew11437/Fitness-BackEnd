@@ -21,4 +21,4 @@ const SchSchema = new mongoose.Schema({
    
 
 module.exports.SchSchema = SchSchema;
-module.exports.Log = mongoose.model("appointments", SchSchema);
+module.exports.Schedule = mongoose.model("appointments", SchSchema);

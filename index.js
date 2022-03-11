@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const scheduleRouter = require("./routes/appointments");
+
 connectDb();
 
 
@@ -13,7 +14,7 @@ connectDb();
 //! NOTE - for each route file, don't forget to import your router into index.js and add a new app.use statement below!
 
 app.use(cors(
-  { origin: "*"}
+  { origin: "http://localhost:3000"}
 ));
 app.use(express.json());
 app.use(`/api/users`, usersRouter);
